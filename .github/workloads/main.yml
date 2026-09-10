@@ -20,7 +20,7 @@ on:
 jobs:
   build:
     if: github.ref == 'refs/heads/main'
-    uses: Ashmoret021/ci-template/.github/workflows/build.yml@main
+    uses: Ashmoret021/Gitops/.github/workflows/build.yml@main
     with:
       TAG: ${{ inputs.TAG }}
     secrets:
@@ -28,7 +28,7 @@ jobs:
 
   mirror:
     if: startsWith(github.ref, 'refs/tags/')
-    uses: Ashmoret021/ci-template/.github/workflows/build.yml@main
+    uses: Ashmoret021/Gitops/.github/workflows/build.yml@main
     with:
       TAG: ${{ inputs.TAG }}
     secrets:
@@ -36,7 +36,7 @@ jobs:
 
   deploy:
     if: startsWith(github.ref, 'refs/tags/')
-    uses: Ashmoret021/ci-template/.github/workflows/deploy.yml@main
+    uses: Ashmoret021/Gitops/.github/workflows/deploy.yml@main
     with:
       TAG: ${{ inputs.TAG }}
       MADOR: ${{ inputs.MADOR }}
