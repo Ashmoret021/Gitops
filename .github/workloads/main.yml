@@ -1,0 +1,44 @@
+# .github/workflows/main.yml
+
+name: CICD
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - '*'
+  workflow_call:
+    inputs:
+      TAG:
+        required: true
+        type: string
+      MADOR:
+        required: true
+        type: string
+
+jobs:
+  build:
+    if: github.ref == 'refs/heads/main'
+    uses: Devops-Had-Hatzot/ci-template/.github/workflows/build.yml@main
+    with:
+      TAG: ${{ inputs.TAG }}
+    secrets:
+       GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+
+  mirror:
+    if: startsWith(github.ref, 'refs/tags/')
+    uses: Devops-Had-Hatzot/ci-template/.github/workflows/build.yml@main
+    with:
+      TAG: ${{ inputs.TAG }}
+    secrets:
+       GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+
+  deploy:
+    if: startsWith(github.ref, 'refs/tags/')
+    uses: Devops-Had-Hatzot/ci-template/.github/workflows/deploy.yml@main
+    with:
+      TAG: ${{ inputs.TAG }}
+      MADOR: ${{ inputs.MADOR }}
+    secrets:
+       GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
