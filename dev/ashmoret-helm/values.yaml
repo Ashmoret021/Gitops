@@ -1,0 +1,17 @@
+ashmoret-helm:  
+  objects:
+
+    - name: frontend
+      type: deployment
+      image: nginx:latest
+      replicas: 2
+
+      service:
+        enabled: true
+        port: 80
+        targetPort: 80
+
+      configMap:
+        enabled: true
+        data:
+          APP_ENV: production
