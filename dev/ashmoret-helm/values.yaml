@@ -3,7 +3,7 @@ ashmoret-helm:
 
     - name: frontend
       type: deployment
-      image: nginx:latest
+      tag: latest
       replicas: 2
 
       service:
