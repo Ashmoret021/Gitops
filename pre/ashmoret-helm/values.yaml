@@ -3,7 +3,7 @@ ashmoret-helm:
 
     - name: frontend
       type: deployment
-      tag: latest
+      tag: latest-pre
       replicas: 2
 
       service:
