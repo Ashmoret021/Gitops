@@ -1,4 +1,4 @@
-ashmoret-helm:  
+ashmoret-helm:
   objects:
 
     - name: frontend
@@ -10,6 +10,14 @@ ashmoret-helm:
         enabled: true
         port: 80
         targetPort: 80
+
+      resources:
+        requests:
+          cpu: 250m
+          memory: 400Mi
+        limits:
+          cpu: 500m
+          memory: 800Mi
 
       configMap:
         enabled: true
