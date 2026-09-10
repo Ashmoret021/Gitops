@@ -26,5 +26,5 @@ appVersion: "1.16.0"
 dependencies:
   - name: helm-chart
     alias: ashmoret-helm
-    version: 0.2.0
+    version: 0.1.0
     repository: "oci://me-west1-docker.pkg.dev/ad-hatzot/ad-hatzot/helm-chart"
