@@ -3,8 +3,8 @@ ashmoret-helm:
 
     - name: frontend
       type: deployment
-      tag: latest
-      replicas: 2
+      tag: 32031eb5ff38
+      replicas: 1
 
       service:
         enabled: true
